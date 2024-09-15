@@ -5,6 +5,7 @@ from dbconnect import db_connect
 db = db_connect()
 mycursor = db.cursor()
 
+#helper function to make sure a student exists or if the user typed the name in wrong
 def student_exists(first_name, last_name):
     mycursor.execute("SELECT EXISTS(SELECT 1 FROM Students WHERE first_name = %s and last_name = %s)", (first_name, last_name))
     return bool(mycursor.fetchone()[0])
@@ -77,7 +78,7 @@ def edit_student():
         
 
 
-def view_table():       #format
+def view_table():       
     mycursor.execute("SELECT * FROM Students")
 
     for x in mycursor:

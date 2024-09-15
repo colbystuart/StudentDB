@@ -1,5 +1,8 @@
 #Connecting to Database "Students"
 
+#To initialize the database 
+#remove the database variable from db_connect
+
 import mysql.connector
 
 def db_connect():
@@ -12,9 +15,19 @@ def db_connect():
 db = db_connect()
 mycursor = db.cursor()
 
-#mycursor.execute("ALTER TABLE Students ADD COLUMN phoneNumber VARCHAR(15);")
+#Use this command to create the database
+#mycursor.execute("CREATE DATABASE IF NOT EXISTS Students")
+#add  database="Students"  back to db_connect
 
-#mycursor.execute("DESCRIBE Students")
-
-#for x in mycursor:
-#    print(x)
+#Use this command to create the table
+#mycursor.execute("""
+#    CREATE TABLE IF NOT EXISTS students_info (
+#        first_name VARCHAR(255),
+#        last_name VARCHAR(255),
+#        grade INT,
+#        id INT AUTO_INCREMENT PRIMARY KEY,
+#        gpa FLOAT,
+#        email VARCHAR(255),
+#        phoneNumber VARCHAR(15)
+#    )
+#""")
